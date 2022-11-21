@@ -150,6 +150,86 @@ public class InputController : MonoBehaviour
         }
     }
 
+    // X Button
+    public bool XPressed
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.xButton.wasPressedThisFrame;
+            }
+            else if (keyboard != null)
+            {
+                return keyboard.leftShiftKey.wasPressedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool XReleased
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.xButton.wasReleasedThisFrame;
+            }
+            else if (keyboard != null)
+            {
+                return keyboard.leftShiftKey.wasReleasedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    // Y Button
+    public bool YPressed
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.yButton.wasPressedThisFrame;
+            }
+            else if (keyboard != null)
+            {
+                return keyboard.leftShiftKey.wasPressedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool YReleased
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.yButton.wasReleasedThisFrame;
+            }
+            else if (keyboard != null)
+            {
+                return keyboard.leftShiftKey.wasReleasedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    /**** Upper ones ********************************************************/
+
     // Right Shoulder
     public bool RightShoulderPressed
     {
@@ -177,6 +257,45 @@ public class InputController : MonoBehaviour
             if (gamepad != null)
             {
                 return gamepad.rightShoulder.wasReleasedThisFrame;
+            }
+            else if (mouse != null)
+            {
+                return mouse.rightButton.wasReleasedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    // Left Shoulder
+    public bool LeftShoulderPressed
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.leftShoulder.wasPressedThisFrame;
+            }
+            else if (mouse != null)
+            {
+                return mouse.rightButton.wasPressedThisFrame;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
+    public bool LeftShoulderReleased
+    {
+        get
+        {
+            if (gamepad != null)
+            {
+                return gamepad.leftShoulder.wasReleasedThisFrame;
             }
             else if (mouse != null)
             {

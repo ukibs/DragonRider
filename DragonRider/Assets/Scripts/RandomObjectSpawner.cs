@@ -5,9 +5,11 @@ using UnityEngine;
 public class RandomObjectSpawner : MonoBehaviour
 {
     //
-    public GameObject prefabToSpawn;
+    public GameObject[] prefabsToSpawn;
     public int amountToSpawn;
     public Vector3 maxSpaceToSpawn = new Vector3(500, 500, 500);
+    public Vector2 possibleScales = new Vector2(1,1);
+    public bool randomRotation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +28,18 @@ public class RandomObjectSpawner : MonoBehaviour
         for(int i = 0; i < amountToSpawn; i++)
         {
             //
-            GameObject newObject = Instantiate(prefabToSpawn,
+            int prefabIndexToSpawn = Random.Range(0, prefabsToSpawn.Length);
+            //
+            GameObject newObject = Instantiate(prefabsToSpawn[prefabIndexToSpawn],
                 new Vector3(Random.Range(-maxSpaceToSpawn.x, maxSpaceToSpawn.x), Random.Range(-maxSpaceToSpawn.x, maxSpaceToSpawn.x), Random.Range(-maxSpaceToSpawn.x, maxSpaceToSpawn.x)),
                 Quaternion.identity);
             //
-            newObject.transform.eulerAngles = new Vector3 (Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
+            if(randomRotation)
+                newObject.transform.eulerAngles = new Vector3 (Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360));
             //
-            float newScale = Random.Range(2, 50);
+            newObject.transform.parent = transform;
+            //
+            float newScale = Random.Range(possibleScales.x, possibleScales.y);
             newObject.transform.localScale = Vector3.one * newScale;
         }
     }
