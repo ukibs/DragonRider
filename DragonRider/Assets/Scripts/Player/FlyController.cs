@@ -22,15 +22,20 @@ public class FlyController : MonoBehaviour
     public Vector2 cameraFovs = new Vector2(30, 60);
 
     //
+    private static FlyController instance;
     private Rigidbody rb;
     private float currentSpeed = 0;
     private float currentVerticalSpeed;
     private bool focusedManeuvers = false;
     private bool braking = false;
 
+    //
+    public float CurrentSpeed { get { return currentSpeed; } }
+
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         rb = GetComponent<Rigidbody>();
         currentSpeed = startingSpeed;
     }

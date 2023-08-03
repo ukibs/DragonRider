@@ -5,12 +5,21 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     //
+    [Header("Fireball Components")]
     public GameObject fireBallPrefab;
     public Transform shootPoint;
+    [Header("Machinegun Components")]
+    public Transform[] shootPoints;
+    public GameObject bulletPrefab;
+    [Header("Camera Components")]
     public CameraControl cameraControl;
+    [Header("Parameters")]
+    public float mgFireRate = 0.5f;
 
     //
     private Rigidbody rb;
+    private bool machineGunShooting = false;
+    private Coroutine machineGunShootingCoroutine = null;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +38,22 @@ public class AttackController : MonoBehaviour
         else if (InputController.Instance.BReleased)
         {
             
+        }
+
+        //
+        if (InputController.Instance.XPressed)
+        {
+            SpawnBullets();
+            //machineGunShooting = true;
+            if (!machineGunShooting)
+            {
+                machineGunShooting = true;
+                machineGunShootingCoroutine = StartCoroutine(MgAttackCycle());
+            }            
+        }
+        else if (InputController.Instance.XReleased)
+        {
+            machineGunShooting = false;
         }
 
         //
@@ -64,6 +89,38 @@ public class AttackController : MonoBehaviour
         }
     }
 
+    void SpawnBullets()
+    {
+        //
+        for(int i = 0; i < shootPoints.Length; i++)
+        {
+            SpawnBullet(i);
+        }        
+    }
+
+    void SpawnBullet(int index)
+    {
+        //
+        GameObject bullet = Instantiate(bulletPrefab, shootPoints[index].position, shootPoints[index].rotation);
+        BulletController bulletController = bullet.GetComponent<BulletController>();
+        //
+        if (cameraControl.CurrentObjective)
+        {
+            //
+            Vector3 positionToLook = cameraControl.CurrentObjective.position;
+            //
+            PlaneController planeController = cameraControl.CurrentObjective.GetComponent<PlaneController>();
+            if (planeController)
+            {
+                float travelTime = GeneralFunctions.EstimateTimeBetweenTwoPoints(shootPoint.position, positionToLook, bulletController.movementSpeed);
+                positionToLook = GeneralFunctions.EstimateFuturePosition(positionToLook,
+                    cameraControl.CurrentObjective.forward * planeController.movementSpeed, travelTime);
+            }
+            //
+            bullet.transform.LookAt(positionToLook);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger with " + other.name);
@@ -88,6 +145,15 @@ public class AttackController : MonoBehaviour
             rb.velocity = Vector3.zero;
             // TODO: Sufrir daño con esto
             // TODO: Cuando metamos animación de embestida, en ese caso no
+        }
+    }
+
+    IEnumerator MgAttackCycle()
+    {
+        while (machineGunShooting)
+        {
+            yield return new WaitForSeconds(mgFireRate);
+            SpawnBullets();
         }
     }
 }
