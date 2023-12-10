@@ -474,7 +474,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b1a5c1faf222fc4b9e46448401f3164, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fire: {fileID: 9209359606811824030}
+  fires:
+  - {fileID: 2161069993042802454}
+  - {fileID: 8853912635256422872}
+  - {fileID: 7383253889755663776}
+  explosion: {fileID: 6631668886862496346}
   trail: {fileID: 3471411589020622207}
   smokeTrail: {fileID: 4101566374913395882}
   shootPoints:
@@ -789,7 +793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7549238478776459499
 Transform:
   m_ObjectHideFlags: 0
@@ -908,11 +912,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire_Medium-Smoke-Sparks_RateOverTime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
 --- !u!4 &321459354341341417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 87023509468949713, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+  m_PrefabInstance: {fileID: 379189673915634744}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8853912635256422872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
   m_PrefabInstance: {fileID: 379189673915634744}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1867544779388737600
@@ -1014,11 +1027,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire_Medium-Smoke-Sparks_RateOverTime (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
 --- !u!4 &1792416703147734161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 87023509468949713, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+  m_PrefabInstance: {fileID: 1867544779388737600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7383253889755663776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
   m_PrefabInstance: {fileID: 1867544779388737600}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3471411588555344848
@@ -1221,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Explosion_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1966245275766088286, guid: fc87bd5b7312d49d791633293250d799, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2019915090192697889, guid: fc87bd5b7312d49d791633293250d799, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -1290,6 +1316,11 @@ PrefabInstance:
 --- !u!4 &2495289424053779307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7341120954508204911, guid: fc87bd5b7312d49d791633293250d799, type: 3}
+  m_PrefabInstance: {fileID: 5134642466059771908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6631668886862496346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1966245275766088286, guid: fc87bd5b7312d49d791633293250d799, type: 3}
   m_PrefabInstance: {fileID: 5134642466059771908}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7089200086321980150
@@ -1391,8 +1422,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire_Medium-Smoke-Sparks_RateOverTime
       objectReference: {fileID: 0}
+    - target: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+--- !u!1 &2161069993042802454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9195308507420792288, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}
+  m_PrefabInstance: {fileID: 7089200086321980150}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7157572759900573223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 87023509468949713, guid: 75e54243e6d204bf7a1c6910b40e77f2, type: 3}

@@ -14,7 +14,8 @@ public class PlaneController : MonoBehaviour
 
     //
     [Header("Components")]
-    public GameObject fire;
+    public GameObject[] fires;
+    public GameObject explosion;
     public GameObject trail;
     public GameObject smokeTrail;
     public Transform[] shootPoints;
@@ -236,7 +237,12 @@ public class PlaneController : MonoBehaviour
     public void ReceiveDamage()
     {
         currentHealh--;
-        if(currentHealh <= 0)
+        //
+        if (currentHealh < 3) fires[0].SetActive(true);
+        if (currentHealh < 2) fires[1].SetActive(true);
+        if (currentHealh < 1) fires[2].SetActive(true);
+        //
+        if (currentHealh <= 0)
         {
             Die();
         }
@@ -254,7 +260,7 @@ public class PlaneController : MonoBehaviour
         //
         objective.targeteable = false;
         trail.SetActive(false);
-        fire.SetActive(true);
+        explosion.SetActive(true);
         smokeTrail.SetActive(true);
         currentState = PlaneState.Dead;
         Destroy(gameObject, 20f);
